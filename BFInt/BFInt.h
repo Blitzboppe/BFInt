@@ -1,6 +1,10 @@
 #pragma once
 #include "stdafx.h"
+/*
+  Big Integer class written by Peter David Andersson, started in January 2018
 
+  Has most operators and conversion to base 10 (BCD) for printing.
+*/
 class BFInt
 {
 public:
@@ -22,20 +26,27 @@ public:
 	friend bool operator <(const BFInt &lhs, const BFInt &rhs);
 	friend bool operator <=(const BFInt &lhs, const BFInt &rhs);
 	friend std::ostream &operator <<(std::ostream &out, const BFInt &bfintout);
-	friend BFInt operator <<(BFInt lhs, unsigned int rhs);
+	friend BFInt operator <<(BFInt &lhs, unsigned int rhs);
 	BFInt &operator <<=(const unsigned int rhs);
-	friend BFInt operator >>(const BFInt lhs, const unsigned int rhs);
+	friend BFInt operator >>(const BFInt &lhs, const unsigned int rhs);
 	BFInt &operator >>=(unsigned int rhs);
-	friend BFInt operator +(BFInt lhs, const BFInt &rhs);
+	friend BFInt operator &(const BFInt &lhs, const BFInt &rhs);
+	BFInt &operator &=(const BFInt &rhs);
+	friend BFInt operator |(const BFInt &lhs, const BFInt &rhs);
+	BFInt &operator |=(const BFInt &rhs);
+	friend BFInt operator ^(const BFInt &lhs, const BFInt &rhs);
+	BFInt &operator ^=(const BFInt &rhs);
+	BFInt &operator ~();
+	friend BFInt operator +(const BFInt &lhs, const BFInt &rhs);
 	BFInt &operator +=(const BFInt &rhs);
-	friend BFInt operator -(BFInt op);
-	friend BFInt operator -(const BFInt lhs, const BFInt &rhs);
+	friend BFInt operator -(const BFInt &op);
+	friend BFInt operator -(const BFInt &lhs, const BFInt &rhs);
 	BFInt &operator -=(const BFInt &rhs);
-	friend BFInt operator *(const BFInt lhs, const BFInt &rhs);
+	friend BFInt operator *(const BFInt &lhs, const BFInt &rhs);
 	BFInt &operator *=(const BFInt &rhs);
-	friend BFInt operator /(BFInt lhs, const BFInt &rhs);
+	friend BFInt operator /(const BFInt &lhs, const BFInt &rhs);
 	BFInt &operator /=(const BFInt &rhs);
-	friend BFInt operator %(const BFInt lhs, const BFInt &rhs);
+	friend BFInt operator %	(const BFInt &lhs, const BFInt &rhs);
 	BFInt &operator %=(const BFInt &rhs);
 	BFInt &operator ++();
 	BFInt operator ++(int);
